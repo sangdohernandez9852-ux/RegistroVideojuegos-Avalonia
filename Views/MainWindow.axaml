@@ -1,0 +1,311 @@
+﻿
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="RegistroVideojuegos.Views.MainWindow"
+        Title="Registro de Videojuegos"
+        Width="1000"
+        Height="700"
+        MinWidth="850"
+        MinHeight="600"
+        Background="#090D19"
+        WindowStartupLocation="CenterScreen">
+
+    <!-- Distribucion principal: panel lateral y contenido -->
+    <Grid ColumnDefinitions="210,*">
+
+        <!-- PANEL LATERAL DE NAVEGACION -->
+        <Border Grid.Column="0"
+                Background="#11182B"
+                Padding="18">
+
+            <StackPanel Spacing="22">
+
+                <!-- Nombre de la aplicacion -->
+                <StackPanel Spacing="5" Margin="0,12,0,20">
+                    <TextBlock Text="GAME"
+                               FontSize="27"
+                               FontWeight="Bold"
+                               Foreground="#38BDF8"/>
+
+                    <TextBlock Text="LIBRARY"
+                               FontSize="27"
+                               FontWeight="Bold"
+                               Foreground="White"/>
+
+                    <TextBlock Text="VIDEO GAME MANAGER"
+                               FontSize="10"
+                               Foreground="#8293B5"/>
+                </StackPanel>
+
+                
+<!-- Opciones de navegacion del sistema -->
+<TextBlock Text="BIBLIOTECA"
+           Foreground="#7183A6"
+           FontSize="11"
+           FontWeight="Bold"/>
+
+<!-- Acceso para mostrar todos los videojuegos -->
+<Button Content="🎮  All Games"
+        Click="AllGames_Click"
+        Background="#344B83"
+        Foreground="White"
+        HorizontalContentAlignment="Left"
+        Padding="12"
+        Margin="0,3"/>
+
+<TextBlock Text="GESTION"
+           Foreground="#7183A6"
+           FontSize="11"
+           FontWeight="Bold"
+           Margin="0,15,0,0"/>
+
+<!-- Acceso rapido al registro -->
+<Button Content="＋  Registrar juegos"
+        Click="RegistrarMenu_Click"
+        Background="Transparent"
+        Foreground="#B7C4DD"
+        HorizontalContentAlignment="Left"
+        Padding="10"
+        Margin="0,2"/>
+
+<!-- Acceso rapido a la modificacion -->
+<Button Content="✎  Modificar juegos"
+        Click="ModificarMenu_Click"
+        Background="Transparent"
+        Foreground="#B7C4DD"
+        HorizontalContentAlignment="Left"
+        Padding="10"
+        Margin="0,2"/>
+
+<!-- Acceso a la administracion de la biblioteca -->
+<Button Content="▣  Administrar biblioteca"
+        Click="AdministrarMenu_Click"
+        Background="Transparent"
+        Foreground="#B7C4DD"
+        HorizontalContentAlignment="Left"
+        Padding="10"
+        Margin="0,2"/>
+
+<TextBlock Text=" "
+           VerticalAlignment="Stretch"/>
+
+
+                <!-- Informacion inferior -->
+                <Border Background="#1B2941"
+                        CornerRadius="10"
+                        Padding="12">
+
+                    <StackPanel Spacing="5">
+                        <TextBlock Text="SISTEMA ACTIVO"
+                                   Foreground="#38BDF8"
+                                   FontSize="11"
+                                   FontWeight="Bold"/>
+
+                        <TextBlock Text="RegistroVideojuegos"
+                                   Foreground="White"
+                                   FontSize="12"/>
+
+                        <TextBlock Text="Base de datos SQLite"
+                                   Foreground="#8293B5"
+                                   FontSize="10"/>
+                    </StackPanel>
+
+                </Border>
+
+            </StackPanel>
+        </Border>
+
+        <!-- AREA PRINCIPAL -->
+        <Grid Grid.Column="1"
+              Margin="25"
+              RowDefinitions="Auto,Auto,Auto,*">
+
+            <!-- ENCABEZADO -->
+            <StackPanel Grid.Row="0"
+                        Spacing="6"
+                        Margin="0,0,0,20">
+
+                <TextBlock Text="Mi biblioteca de videojuegos"
+                           FontSize="27"
+                           FontWeight="Bold"
+                           Foreground="White"/>
+
+                <TextBlock Text="Administra y organiza tus videojuegos"
+                           FontSize="13"
+                           Foreground="#8293B5"/>
+            </StackPanel>
+
+            <!-- FORMULARIO -->
+            <Border Grid.Row="1"
+                    Background="#151E32"
+                    BorderBrush="#263B60"
+                    BorderThickness="1"
+                    CornerRadius="12"
+                    Padding="18"
+                    Margin="0,0,0,15">
+
+                <StackPanel Spacing="10">
+
+                    <TextBlock Text="DATOS DEL VIDEOJUEGO"
+                               FontSize="15"
+                               FontWeight="Bold"
+                               Foreground="#38BDF8"/>
+
+                    <TextBlock Text="Nombre del videojuego"
+                               Foreground="#DCE7F9"/>
+
+                    <TextBox x:Name="txtNombre"
+                             Watermark="Escribe el nombre del videojuego"/>
+
+                    <TextBlock Text="Plataforma"
+                               Foreground="#DCE7F9"/>
+
+                    <TextBox x:Name="txtPlataforma"
+                             Watermark="PC, PlayStation, Xbox..."/>
+
+                    <!-- BOTONES DE OPERACIONES -->
+                    <WrapPanel HorizontalAlignment="Center"
+                               Margin="0,8,0,0">
+
+                        <Button Content="Registrar"
+                                Click="Registrar_Click"
+                                Background="#2563EB"
+                                Foreground="White"
+                                Padding="15,9"
+                                Margin="5"/>
+
+                        <Button Content="Modificar"
+                                Click="Modificar_Click"
+                                Background="#7138D8"
+                                Foreground="White"
+                                Padding="15,9"
+                                Margin="5"/>
+
+                        <Button Content="Eliminar"
+                                Click="Eliminar_Click"
+                                Background="#C73550"
+                                Foreground="White"
+                                Padding="15,9"
+                                Margin="5"/>
+
+                        <Button Content="Limpiar"
+                                Click="Limpiar_Click"
+                                Background="#334155"
+                                Foreground="White"
+                                Padding="15,9"
+                                Margin="5"/>
+
+                    </WrapPanel>
+                </StackPanel>
+            </Border>
+
+            <!-- MENSAJES DEL SISTEMA -->
+            <Border Grid.Row="2"
+                    Background="#14243A"
+                    BorderBrush="#2563EB"
+                    BorderThickness="1"
+                    CornerRadius="8"
+                    Padding="10"
+                    Margin="0,0,0,15">
+
+                <TextBlock x:Name="txtMensaje"
+                           Text=""
+                           Foreground="#4ADE80"
+                           FontSize="13"
+                           HorizontalAlignment="Center"/>
+            </Border>
+
+            <!-- LISTA DE VIDEOJUEGOS -->
+            <Border Grid.Row="3"
+                    Background="#111B2D"
+                    BorderBrush="#285078"
+                    BorderThickness="1"
+                    CornerRadius="12"
+                    Padding="15">
+
+                <Grid RowDefinitions="Auto,*">
+
+                    <!-- TITULO DE LA LISTA -->
+                    <TextBlock Grid.Row="0"
+                               Text="🎮  TODOS LOS VIDEOJUEGOS"
+                               Foreground="White"
+                               FontSize="17"
+                               FontWeight="Bold"
+                               Margin="0,0,0,12"/>
+
+                    <!-- LISTA CON DESPLAZAMIENTO VERTICAL -->
+                    <ListBox Grid.Row="1"
+                             x:Name="ListaVideojuegos"
+                             Background="Transparent"
+                             BorderThickness="0"
+                             ScrollViewer.VerticalScrollBarVisibility="Auto"
+                             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                             SelectionChanged="ListaVideojuegos_SelectionChanged">
+
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+
+                                <!-- TARJETA DE CADA VIDEOJUEGO -->
+                                <Border Background="#1B2941"
+                                        BorderBrush="#28618C"
+                                        BorderThickness="1"
+                                        CornerRadius="9"
+                                        Padding="12"
+                                        Margin="4">
+
+                                    <Grid ColumnDefinitions="55,*,Auto">
+
+                                        <!-- ICONO DEL VIDEOJUEGO -->
+                                        <Border Grid.Column="0"
+                                                Width="43"
+                                                Height="43"
+                                                CornerRadius="9"
+                                                Background="#263E70">
+
+                                            <TextBlock Text="🎮"
+                                                       FontSize="23"
+                                                       HorizontalAlignment="Center"
+                                                       VerticalAlignment="Center"/>
+                                        </Border>
+
+                                        <!-- INFORMACION DEL JUEGO -->
+                                        <StackPanel Grid.Column="1"
+                                                    VerticalAlignment="Center"
+                                                    Spacing="4">
+
+                                            <TextBlock Text="{Binding Nombre}"
+                                                       Foreground="White"
+                                                       FontSize="15"
+                                                       FontWeight="Bold"/>
+
+                                            <TextBlock Text="{Binding Plataforma}"
+                                                       Foreground="#38BDF8"
+                                                       FontSize="12"/>
+                                        </StackPanel>
+
+                                        <!-- IDENTIFICADOR -->
+                                        <Border Grid.Column="2"
+                                                Background="#28375A"
+                                                CornerRadius="7"
+                                                Padding="10,5"
+                                                VerticalAlignment="Center">
+
+                                            <TextBlock Text="{Binding Id}"
+                                                       Foreground="#A5B4FC"
+                                                       FontWeight="Bold"
+                                                       FontSize="12"/>
+                                        </Border>
+
+                                    </Grid>
+                                </Border>
+
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                </Grid>
+            </Border>
+
+        </Grid>
+    </Grid>
+</Window>
